@@ -6,6 +6,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@polkadot/extension-dapp": "^0.45.4",
+    "@polkadot/util": "^11.1.2",
+    "@polkadot/util-crypto": "^11.1.2",
+    "gray-matter": "^4.0.3",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
