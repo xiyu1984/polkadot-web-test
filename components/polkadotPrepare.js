@@ -2,6 +2,8 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import styles from './layout.module.css';
 
+
+
 function generateSigning(signed_message, setSigned, selectedAddress) {
 
     // const handleInputChange = async (event) => {
@@ -14,13 +16,14 @@ function generateSigning(signed_message, setSigned, selectedAddress) {
     const handleButtonClick = async (event) => {
         event.preventDefault();
         const form = event.target;
+        console.log(event.nativeEvent.submitter.id);
         const formData = new FormData(form);
         const message1 = formData.get('unsigned message');
         // const message2 = formData.get('second message');
 
         const {signRaw} = await import('../lib/onchain');
 
-        const signed = await signRaw(message1, selectedAddress);
+        const signed = await signRaw(message1, selectedAddress, event.nativeEvent.submitter.id);
 
         setSigned(signed);
     }
@@ -40,7 +43,8 @@ function generateSigning(signed_message, setSigned, selectedAddress) {
                     id="2"
                     name='second message'
                 /> */}
-                <button type='submit'>Submit</button>
+                <button type='submit' id='polkadot-sign'>Polkadot Sign</button>
+                <button type='submit' id='eth-sign'>ETH Sign</button>
             </form>
             <div className={styles.container}>
                 {
