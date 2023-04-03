@@ -71,7 +71,7 @@ export default function PolkadotPrepare({children, stateSetter, addresses}) {
             <section className={styles.container}>
                 {
                     addresses.map(({address, name, type}) => {
-                        if (type === 'ecdsa' || type === 'ethereum') {
+                        if (/*type === 'ecdsa' || */type === 'ethereum') {
                             return <label key={address}>
                                 <input type='radio' value= {address} checked={selectedAddress === address} onChange={handleOnChange}> 
                                 </input>
