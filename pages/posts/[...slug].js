@@ -1,38 +1,47 @@
 import { useRouter } from 'next/router';
 import Layout from '../../components/layout';
-// import { getPostData } from '../../lib/posts';
+import { getPostData } from '../../lib/posts';
+import utilStyles from '../../styles/utils.module.css';
 
-// export async function getStaticProps({ params }) {
-    
-//     const postData = await getPostData(slug);
-//     return {
-//       props: {
-//         postData,
-//       },
-//     };
-// }
+import Head from 'next/head';
 
-// export async function getStaticPaths() {
-//     return {
-//       paths: [
-//             {
-//                 params: {
-//                     slug: ['any', 'haha']
-//                 }
-//             },
-//       ],
-//       fallback: false,
-//     };
-// }
+export async function getStaticProps({ params }) {
+    const { slug } = params;
+    // console.log(slug);
+
+    let fileID = '';
+    for (var idx = 0; idx < slug.length; ++idx) {
+        fileID += '/' + slug[idx];
+    }
+
+    // console.log(fileID);
+
+    const postData = await getPostData(fileID);
+
+    // console.log(postData);
+
+    return {
+      props: {
+        postData,
+      },
+    };
+}
+
+export async function getStaticPaths() {
+    return {
+      paths: [],
+      fallback: true,
+    };
+}
 
 const Comment = ( { postData } ) => {
     const router = useRouter();
-    const slug = (router.query.slug) || [];
-    console.log(slug);
+
+    // console.log(postData.title);
 
   return (
     <Layout>
-        {/* <Head>
+        <Head>
             <title>{postData.title}</title>
         </Head>
         <article>
@@ -41,8 +50,7 @@ const Comment = ( { postData } ) => {
                 <Date dateString={postData.date} />
             </div>
             <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </article> */}
-        <h2>Hello {slug}</h2>
+        </article>
     </Layout>
   )
 }
