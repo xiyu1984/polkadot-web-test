@@ -2,8 +2,6 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import styles from './layout.module.css';
 
-
-
 function generateSigning(signed_message, setSigned, selectedAddress) {
 
     // const handleInputChange = async (event) => {

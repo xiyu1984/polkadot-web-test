@@ -4,6 +4,7 @@ import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
+import Animal from '../components/getAnimal'
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData();
@@ -45,9 +46,10 @@ export default function Home({allPostsData}) {
 
       <div>
         <Link href='./posts/first-post'>
-          Go there!
+          Go to "first-post"!
         </Link>
       </div>
+      <Animal />
     </Layout>
   );
 }

@@ -6,6 +6,9 @@ import utilStyles from '../../styles/utils.module.css';
 import Head from 'next/head';
 
 export async function getStaticProps({ params }) {
+
+    // This `slug` is the connection to the name of [...slug].js  
+    // If using `[id].js or [...id].js, here we need to use `id` 
     const { slug } = params;
     // console.log(slug);
 
